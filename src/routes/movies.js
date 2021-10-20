@@ -1,6 +1,6 @@
 const { Router }  = require('express');
-
 const router = Router();
+const _ = require('underscore');
 
 const movies = require('../sample.json');
 
@@ -26,10 +26,16 @@ res.json(movies)
 
 } else {
 
-res.send('Wrong Request');
+res.json({error:'Wrong Request'});
 
 }
 
+});
+
+
+router.delete('/:id', (req,res) => {
+    console.log(req.params);
+    res.send('deleted');
 });
 
 module.exports = router;
